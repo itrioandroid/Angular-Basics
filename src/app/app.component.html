@@ -1,0 +1,22 @@
+<div style="text-align:center"> 
+<h1 class="test">
+  Angular Training
+</h1>
+<h2> Message from Child Component = {{message}}</h2>
+</div>
+<app-test (outputEvent)="message=$event" [nameInteraction]="title" ></app-test>
+<app-employee-details></app-employee-details>
+<app-employee-list></app-employee-list>
+
+<div style="text-align: center;">
+  <h1>Routing and Navigation </h1>
+</div>
+<nav>
+  <a routerLink ="/departments" routerLinkActive="active"> Departments</a>
+  <a routerLink ="/students" routerLinkActive="active"> Students</a>
+</nav>
+<router-outlet></router-outlet>
+<h3>Structural Directive</h3>
+<p *appRepeat="5">I am being repeated...</p>
+<h3>Attribute Directive</h3>
+<p [appMessage]="myMessage">Click Here</p>

@@ -1,0 +1,106 @@
+<!-- Interpolation-->
+<div>
+Welcome {{name}}
+</div>
+<h2 class="text-danger"> Angular 8 Learning</h2>
+<!-- Class Binding-->
+<h2 class="text-success" [class]="successClass"> Class Binding</h2>
+<h2 [class.text-danger]="hasError" > Binding Example</h2>
+<h2 [ngClass]="successClass" > Class Binding End</h2>
+<!--ngClass directive is used to add class object to ngClass to add multiple class-->
+<!-- End Class Binding-->
+<!-- Style Binding-->
+<h2 [style.color]="'orange'">Style Binding Start</h2>
+<h2 [style.color]="hasError ? 'red':'green' ">Style Binding Condional</h2>
+<!--ngStyle directive is used to add class object to ngStyle to add multiple style-->
+<h2 [ngStyle]="titleStyle">Style Binding Start</h2>
+<h2 [style.color]="highlightColor">Style Binding 2</h2>
+<!-- End Style Binding-->
+<h2>{{"Length of " + name + " = " + name.length}}</h2>
+<h2>{{"Great Method Called :" + greatUser()}}</h2>
+<h2>{{"SiteURL :" + siteURL}}</h2>
+<!-- Property Binding-->
+<input type="text" value="Prashun">
+<!--Chech Difference between Attribute and property in console 
+    using $0.getAttribute("value") & $0.value -->
+    <input [disabled]="IsDisabled" id="{{myId}}" type="text" value="Prashun"> 
+    <input disabled=false id="myID" type="text" value="Prashun"> 
+    <!-- Property binding is used to compute boolean value for various property of html-->
+    <input bind-disabled="IsDisabled" id="myID" type="text" [value]="name">
+    <!--Alternative of [] is "bind" keyword-->
+    <!--Event Binding: It Capture some event and allows us to perform DOM operations-->
+    <button (click) = "onClick($event)">Great</button>
+    <!-- $event is a special variable of angular which is used to capture dom event-->
+    <button (click) = "greetings='Inline event Binding'">Great</button>
+    {{greetings}}
+    <!--HTML Template Variable : It is used to refer to html element and all of its DOM properties-->
+    <input #myInput type="text"><!--#VAR Name is used to create Template Variable-->
+    <button (click)="logMessage(myInput.value)">Log</button>
+<!-- Two WAy Binding -->
+<input [(ngModel)]="name" type="text">
+{{name}}
+<!--Directives are used to add or remove HTMl elements in DOM -->
+<h2 *ngIf = "displayNme; else elseBlock">{{name}}</h2>
+<!-- ngTemplate is a container which is used to render HTML element in DOM -->
+<ng-template #elseBlock>
+<h2>Else Block</h2>
+</ng-template>
+<!-- ng-template used to execute then and else part-->
+
+<div *ngIf = "displayNme; then thenBlock; else elseBlocks"></div>
+<ng-template #thenBlock>
+    <h2>Then Block</h2>
+</ng-template>
+
+<ng-template #elseBlocks>
+    <h2>Else Block Ng-Template</h2>
+</ng-template>
+
+<!--ngSwitch is similar to any other Switch the only difference is that it replaces case for HTMl-->
+<div [ngSwitch]="color">
+    <div *ngSwitchCase ="'red'">This is red color</div>
+    <div *ngSwitchCase ="'blue'">This is blue color</div>
+    <div *ngSwitchCase ="'green'">This is green color</div>
+    <div *ngSwitchDefault>Pick Again</div>
+</div>
+
+<!--ngFor directive is used to render list of elements.
+    It is similar to for loop only difference is here we render html elements-->
+    <div *ngFor ="let color of colors; index as i">
+        <h2>{{i+1}} {{color}}</h2>
+    </div>
+
+    <!--First,Last and index can be used to get boolean values in ngFor-->
+
+    <!--Component Interaction @Input Property-->
+    <h2>Componet Interaction Input property : {{"Hello " + inputProperty}}</h2>
+    <!--Component Interaction @Output Property-->
+    <button (click)="fireEvent()"> Send Event</button>
+
+    <!--Pipes allows us to transform data before we display it.
+        It changes data only for view it doesn't change value of property in class.-->
+    <h3>String Pipes Example</h3>
+    <h3>{{pipeName | lowercase}}</h3>
+    <h3>{{pipeName | uppercase}}</h3>
+    <h3>{{pipeName | slice:3:5}}</h3>
+    <h3>{{pipeMessage | titlecase}}</h3>
+    <h3>{{pipeJson | json}}</h3>
+    <!-- Number Pipe-->
+    <h3>{{5.678 | number:'1.2-3'}}</h3>
+    <h3>{{5.678 | number:'2.3-4'}}</h3>
+    <h3>{{5.678 | number:'3.3-4'}}</h3>
+    <!-- Percent Pipe -->
+    <h3>{{0.25 | percent}}</h3>
+    <!-- Currency Pipe -->
+    <h3>{{0.25 | currency}}</h3>
+    <h3>{{0.25 | currency:'EUR'}}</h3>
+    <h3>{{0.25 | currency:'USD':'code'}}</h3>
+    <!-- Date Pipe-->
+    <h3>{{date}}</h3>
+    <!--Similar to short date we have medium and long Date also-->
+    <h3>{{date | date:'short'}}</h3>
+    <h3>{{date | date:'shortDate'}}</h3>
+    <h3>{{date | date:'shortTime'}}</h3>
+    <!--Custom PIpe Summary-->
+    <h4>{{pipeText | summary:10}}</h4>
+    <h4>{{pipeText | summary}}</h4>
